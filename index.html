@@ -11,5 +11,39 @@
         </style>
     </head>
     <body>
+        <script type="text/javascript">
+/*
+  Oject which sets renderer, dimensions and a default Scene.
+*/
+            var config = {
+                type: Phaser.AUTO, 
+                width: 800,
+                height: 600,
+                scene: {
+                    preload: preload,
+                    create: create,
+                    update: update
+                }
+            };
+/*
+  Game is a local object, which takes the config object and gives life to this game
+*/       
+            var game = new Phaser.Game(config);
+        
+            function preload ()
+            {
+            }
+        
+            function create ()
+            {
+            }
+        
+            function update ()
+            {
+            }
+        
+        </script>
+            
     </body>
-</html>
+</html>    
+ 
