@@ -37,6 +37,8 @@
             var stars;
             var platforms;
             var cursors;
+            var score = 0;
+            var scoreText;
 /*
   Game is a local object, which takes the config object and gives life to this game
 */       
@@ -51,7 +53,7 @@
                 this.load.spritesheet('dude', 
                     'assets/dude.png',
                     { frameWidth: 32, frameHeight: 48 }
-    );
+                );
             }
         
             function create ()
@@ -92,9 +94,19 @@
                 frameRate: 10,
                 repeat: -1
                 });
+                
+                cursors = this.input.keyboard.createCursorKeys();
+                
+                stars.children.iterate(function (child) {
+                child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+                });
+                
+                scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
 
-                
-                
+                this.physics.add.collider(player, platforms);
+                this.physics.add.collider(stars, platforms);
+
+                this.physics.add.overlap(player, stars, collectStar, null, this);
             }
         
             function update ()
@@ -127,6 +139,7 @@
             function collectStar (player, star)
             {
                 star.disableBody(true, true);
+                
             }
         
         </script>
